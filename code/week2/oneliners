@@ -1,0 +1,6 @@
+
+for i in $(seq 1 50); do ping -c1 10.0.5.$i &> /dev/null && echo 10.0.5.$i >> /home/champuser/Desktop/results.txt; done
+
+sudo nmap -sn 10.0.5.2-50 -oG - | awk '/Up$/{print $2}' >> /home/champuser/Desktop/nmapresults.txt
+
+fping -g 10.0.5.2 10.0.5.50 -a -q >> /home/champuser/Desktop/fpingresult.txt
