@@ -9,10 +9,10 @@ read -p "Please input the port you would like to scan: " portnum
 
 function printresults() {
 	echo "Printing results:"
-	echo "Host IP    Open Port"
+	echo "ip,port"
 	for h in $(seq 1 255); do
     	  timeout .1 bash -c "echo >/dev/tcp/$netprefix.$h/$portnum" 2>/dev/null && 
-      	    echo "$netprefix.$h   $portnum"
+      	    echo "$netprefix.$h,$portnum"
 done
 
 echo "Process finished"
